@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Item carousel</title>
+<link rel="stylesheet" type="text/css" href="responsive.css">
+<link rel="stylesheet" type="text/css" href="itemcarousel.css">
+<script src="jquery-1.10.2.min.js"></script>
+<script src="ItemCarousel.js"></script>
+</head>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col span-xs">
+				<div id="carousel-1" class="carousel">
+					<article id="a_1">
+						<div class="box">
+							<img src="image-1.jpg" alt="">
+						</div>
+					</article>
+					<article id="a_2">
+						<div class="box">
+							<img src="image-2.jpg" alt="">
+						</div>
+					</article>
+					<article id="a_3">
+						<div class="box">
+							<img src="image-3.jpg" alt="">
+						</div>
+					</article>
+					<article id="a_4">
+						<div class="box">
+							<img src="image-1.jpg" alt="">
+						</div>
+					</article>
+					<article id="a_5">
+						<div class="box">
+							<img src="image-2.jpg" alt="">
+						</div>
+					</article>
+					<article id="a_6">
+						<div class="box">
+							<img src="image-3.jpg" alt="">
+						</div>
+					</article>
+					<article id="a_7">
+						<div class="box">
+							<img src="image-1.jpg" alt="">
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="row">
+			<div class="col span-xs">
+				<div id="carousel-2" class="carousel">
+					<article id="a_1">
+						<div class="box">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac dictum nunc. In felis diam, viverra non libero et, semper mollis mi. Suspendisse viverra eros a urna fringilla imperdiet id sed orci. Proin fermentum, odio accumsan finibus malesuada, nulla risus placerat lorem, eu suscipit dolor lorem non eros.</p>
+						</div>
+					</article>
+					<article id="a_2">
+						<div class="box">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac dictum nunc. In felis diam, viverra non libero et, semper mollis mi. Suspendisse viverra eros a urna fringilla imperdiet id sed orci. Proin fermentum, odio accumsan finibus malesuada..</p>
+						</div>
+					</article>
+					<article id="a_3">
+						<div class="box">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac dictum nunc. In felis diam, viverra non libero et, semper mollis mi. Suspendisse viverra eros a urna fringilla imperdiet id sed orci. Proin fermentum, odio accumsan finibus malesuada, nulla risus placerat lorem, eu suscipit dolor lorem non eros. Nam interdum massa ut tellus molestie aliquam. Nunc lacinia convallis augue eu hendrerit.</p>
+						</div>
+					</article>
+					<article id="a_4">
+						<div class="box">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac dictum nunc. In felis diam, viverra non libero et, semper mollis mi. Suspendisse viverra eros a urna fringilla imperdiet id sed orci. Proin fermentum.</p>
+						</div>
+					</article>
+					<article id="a_5">
+						<div class="box">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac dictum nunc. In felis diam, viverra non libero et, semper mollis mi. Suspendisse viverra eros a urna fringilla imperdiet id sed orci. Proin fermentum, odio accumsan finibus malesuada, nulla risus placerat lorem.</p>
+						</div>
+					</article>
+					<article id="a_6">
+						<div class="box">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac dictum nunc. In felis diam, viverra non libero et, semper mollis mi. Suspendisse viverra eros a urna fringilla imperdiet id sed orci. Proin fermentum, odio accumsan finibus malesuada.</p>
+						</div>
+					</article>
+					<article id="a_7">
+						<div class="box">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque ac dictum nunc. In felis diam, viverra non libero et, semper mollis mi. Suspendisse viverra eros a urna fringilla imperdiet id sed orci. Proin fermentum, odio accumsan finibus malesuada, nulla risus placerat lorem, eu suscipit dolor lorem non eros. Nam interdum massa ut tellus molestie aliquam. Nunc lacinia convallis augue eu hendrerit.</p>
+						</div>
+					</article>
+				</div>
+			</div>
+		</div>
+	</div>
+	<a  id="add" href="#">ADD ITEM</a>
+	<script>
+		$(window).load(function()
+		{
+			$('#carousel-1').ItemCarousel(
+				{ 
+					items: [[0, 1]], 
+					paging: 'thumbnails', 
+					draggable: true,
+					arrows:	false
+				}
+			);
+
+			var slider = $('#carousel-2').ItemCarousel(
+				{ 
+					paging: 'numbers',
+					draggable: true,
+					markup: (
+						'<div class="viewport" is="viewport"></div>' +
+						'<div class="nav_wrapper">' +
+							'<div class="arrow left" is="arrow-left"></div>' +
+							'<div class="paging" is="paging"></div>' +
+							'<div class="arrow right" is="arrow-right"></div>' +
+						'</div>'
+					)
+				}
+			);
+
+			console.log(slider);
+
+			$('#add').click(function(e)
+			{
+				e.preventDefault();
+
+				var new_article = $('<article><div class="box"><p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p></div></article>');
+
+				slider.addItems(new_article);
+
+				slider.goto('last');
+			});
+
+			
+		});
+	</script>
+</body>
+</html>
